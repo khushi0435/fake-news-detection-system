@@ -1,0 +1,11 @@
+# Deep Learning Based Fake News Detection System
+# Requirements for BCA Final Year Project
+
+tensorflow>=2.15.0
+streamlit>=1.30.0
+pandas>=2.0.0
+numpy>=1.24.0
+scikit-learn>=1.3.0
+matplotlib>=3.8.0
+seaborn>=0.13.0
+requests>=2.31.0
