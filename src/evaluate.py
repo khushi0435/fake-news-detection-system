@@ -66,14 +66,14 @@ def evaluate_model(model, X_test_pad, y_test, output_dir: str = "models", thresh
     clf_report = classification_report(
         y_true,
         y_pred,
-        target_names=["Real News (0)", "Fake News (1)"],
+        target_names=["Fake News (0)", "Real News (1)"],
         digits=4,
         output_dict=True
     )
     clf_report_text = classification_report(
         y_true,
         y_pred,
-        target_names=["Real News (0)", "Fake News (1)"],
+        target_names=["Fake News (0)", "Real News (1)"],
         digits=4
     )
 
@@ -122,8 +122,8 @@ def evaluate_model(model, X_test_pad, y_test, output_dir: str = "models", thresh
         annot=True,
         fmt="d",
         cmap="Blues",
-        xticklabels=["Predicted Real (0)", "Predicted Fake (1)"],
-        yticklabels=["Actual Real (0)", "Actual Fake (1)"]
+        xticklabels=["Predicted Fake (0)", "Predicted Real (1)"],
+        yticklabels=["Actual Fake (0)", "Actual Real (1)"]
     )
     plt.title("BiLSTM Fake News Detection - Confusion Matrix", fontsize=14, fontweight="bold")
     plt.ylabel("Actual Label", fontsize=12)

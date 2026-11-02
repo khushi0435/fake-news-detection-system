@@ -371,19 +371,19 @@ with tab2:
             else:
                 st.info("Training history curves will appear after training.")
 
-        st.markdown("#### Confusion Matrix Breakdown (Unseen 1,500 Test Samples)")
+        st.markdown("#### Confusion Matrix Breakdown (Unseen Test Samples)")
         cm_data = metrics.get("confusion_matrix", {})
         col_cm1, col_cm2 = st.columns(2)
+
         with col_cm1:
-            st.write(f"- **True Reals (Class 0)**: `{cm_data.get('true_reals_correct', 701)}` authentic news articles correctly verified.")
-            st.write(f"- **False Fakes (Type I Error)**: `{cm_data.get('false_fakes_real_as_fake', 49)}` authentic news misclassified as fake.")
+            st.write(f"- **True Fakes (Class 0)**: `{cm_data.get('true_fakes_correct', 0)}` fake news articles correctly identified as fake.")
+            st.write(f"- **False Reals (Class 0 predicted as 1)**: `{cm_data.get('false_reals_fake_as_real', 0)}` fake news articles incorrectly classified as real.")
+
         with col_cm2:
-            st.write(f"- **False Reals (Type II Error)**: `{cm_data.get('false_reals_fake_as_real', 42)}` fake news articles misclassified as real.")
-            st.write(f"- **True Fakes (Class 1)**: `{cm_data.get('true_fakes_correct', 708)}` fake news articles correctly flagged.")
+            st.write(f"- **False Fakes (Class 1 predicted as 0)**: `{cm_data.get('false_fakes_real_as_fake', 0)}` real news articles incorrectly classified as fake.")
+            st.write(f"- **True Reals (Class 1)**: `{cm_data.get('true_reals_correct', 0)}` real news articles correctly identified as real.")
     else:
         st.info("No saved evaluation metrics found yet. Run `python src/train.py` to train and generate genuine test metrics.")
-
-
 # ==========================================
 # TAB 3: DEEP LEARNING ARCHITECTURE
 # ==========================================
